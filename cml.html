@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="deu">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Djago</title>
+    <!-- icon -->
+    <!-- <link rel="icon" href="./img/attent.ico" /> -->
+    <!-- css -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!-- Webfont -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="./fontawesome/css/all.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header id="top">
+        <nav>
+            <a href="#">Home</a>
+            <a href="blatt01.html">blatt01</a>
+            <a href="blatt02.html">blatt02</a>
+            <a href="blatt03.html">blatt03</a>
+            <a href="blatt04.html">blatt04</a>
+            <a href="blatt05.html">blatt05</a>
+            <a href="blatt06.html">blatt06</a>
+            <a href="blatt07.html">blatt07</a>
+            <a href="blatt08.html">blatt08</a>
+            <a href="blatt09.html">blatt09</a>
+            <a href="blatt10.html">blatt10</a>
+            <a href="open.html">Open</a>
+            <a href="#">CML</a>
+        </nav>
+    </header>
+
+    <main>
+        <pre>
+                Building a complete Django program with all the specified features is a complex task that requires multiple files and code organization. Below, I'll provide you with a high-level overview of how to structure this project. You'll need to create the necessary Django app, models, views, templates, and implement the specific features outlined in your requirements.
+
+                **Step 1: Set Up Django Project**
+                Assuming you have Django installed, create a new Django project and a new app within it.
+                
+                ```bash
+                django-admin startproject word_guess_game_project
+                cd word_guess_game_project
+                python manage.py startapp word_guess_game
+                ```
+                
+                **Step 2: Define Models**
+                In your `word_guess_game` app, define the models for the database. You can use Django's built-in models to represent Dutch words and their attributes.
+                
+                ```python
+                # models.py
+                from django.db import models
+                
+                class DutchWord(models.Model):
+                    DUTCH_WORD_TYPES = [
+                        ('noun', 'Noun'),
+                        ('verb', 'Verb'),
+                        ('adverb', 'Adverb'),
+                    ]
+                
+                    dutch = models.CharField(max_length=100, unique=True)
+                    word_type = models.CharField(max_length=10, choices=DUTCH_WORD_TYPES)
+                    example = models.TextField()
+                    translations = models.JSONField()
+                    dutch_antonym = models.CharField(max_length=100, blank=True)
+                
+                    def __str__(self):
+                        return self.dutch
+                ```
+                
+                Don't forget to create and apply migrations for this model.
+                
+                **Step 3: Create Views**
+                Create views for the different functionalities you want to offer: Play, Add Word, Modify, Statistics.
+                
+                ```python
+                # views.py
+                from django.shortcuts import render
+                
+                def play(request):
+                    # Implement the Play functionality here
+                    return render(request, 'play.html')
+                
+                def add_word(request):
+                    # Implement the Add Word functionality here
+                    return render(request, 'add_word.html')
+                
+                def modify(request):
+                    # Implement the Modify functionality here
+                    return render(request, 'modify.html')
+                
+                def statistics(request):
+                    # Implement the Statistics functionality here
+                    return render(request, 'statistics.html')
+                ```
+                
+                **Step 4: Create Templates**
+                Create HTML templates for each view in the `templates` directory of your app. You'll need templates for Play, Add Word, Modify, and Statistics.
+                
+                **Step 5: Configure URLs**
+                Set up URL routing in your app's `urls.py` file to map URLs to your views.
+                
+                ```python
+                # urls.py
+                from django.urls import path
+                from . import views
+                
+                urlpatterns = [
+                    path('play/', views.play, name='play'),
+                    path('add_word/', views.add_word, name='add_word'),
+                    path('modify/', views.modify, name='modify'),
+                    path('statistics/', views.statistics, name='statistics'),
+                ]
+                ```
+                
+                **Step 6: Implement Logic**
+                Implement the logic for each of the functionalities (Play, Add Word, Modify, Statistics) within the corresponding views. This includes database operations, game logic, form handling, and statistics calculations.
+                
+                **Step 7: Record Game Statistics**
+                For recording game statistics, you can create a separate model to store game records. Each game record should include details like game type, guessed words, mistakes, etc. You can then create a view to display these statistics and perform calculations.
+                
+                **Step 8: Include Database Settings**
+                Make sure to configure your database settings in the project's `settings.py` file.
+                
+                **Step 9: Run the Development Server**
+                Start the development server to test your application.
+                
+                ```bash
+                python manage.py runserver
+                ```
+                
+                **Step 10: Implement the Frontend**
+                Design and implement the user interface using HTML, CSS, and JavaScript as needed. You can use Django's templating engine to integrate dynamic data into your templates.
+                
+                This overview should give you a roadmap for building your Django program. However, building a complete Django application with all the specified features is a significant task and may require a detailed step-by-step implementation. You'll also need to handle database migrations, form handling, user authentication, and more depending on the complexity of your application.
+            </pre>
+
+    </main>
+
+    <footer></footer>
+    <script src="./assets/javascript/jquery.min.js?assets_version=41"></script>
+    <script src="./assets/javascript/core.js?assets_version=41"></script>
+</body>
+
+</html>
