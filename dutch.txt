@@ -1,0 +1,34 @@
+Context: current website. 
+Create a python program.  
+(It may have a GUI interface)
+The program test the user`s knowledge in dutch verb conjugation. 
+On the main menu there is this options: 
+(A) 
+
+
+
+```
+beteken:{
+A:"be·te·ke·nen", B: {"betekende, h. betekend"}
+}
+```
+
+
+(1) To build the stem (`STM`) separate the ending `en` from the string. (e.g. `kopen` -> `kop`, `bellen` -> `bell`.)  
+
+
+
+If STM ends in consonant: 
+	=> If STM ends in double consonant of the same type
+		=> Delete the las consonant of STM and return STM.
+	=> if s-d
+	=> else: 
+		=> svvc 
+
+
+If STM last letter is z: 
+	=> Change the `z` into `s` and return STM. 
+
+If STM last letter is v: 
+	=> Change the `v` into `f` and return STM.
+
